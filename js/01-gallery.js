@@ -3,14 +3,7 @@ import { galleryItems } from "./gallery-items.js";
 
 console.log(galleryItems);
 
-// const instance = basicLightbox.create(`
-//     <h1>Dynamic Content</h1>
-//     <p>You can set the content of the lightbox with JS.</p>
-// `);
-
-// instance.show();
-
-const container = document.querySelector(".gallery");
+const list = document.querySelector(".gallery");
 
 const markup = galleryItems
   .map(
@@ -30,9 +23,9 @@ const markup = galleryItems
   )
   .join("");
 
-container.insertAdjacentHTML("beforeend", markup);
+list.insertAdjacentHTML("beforeend", markup);
 
-container.addEventListener("click", onClick);
+list.addEventListener("click", onClick);
 
 function onClick(evt) {
   evt.preventDefault();
@@ -47,4 +40,15 @@ function onClick(evt) {
     return;
   }
   console.log(evt.target);
+
+  //   const picture =
+  const instance = basicLightbox.create(`
+  <div class ="modal">
+   <img src="${original}" width="800" height="600">
+  </div>
+  `);
+
+  instance.show();
 }
+
+// onClick();
