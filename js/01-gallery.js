@@ -31,3 +31,20 @@ const markup = galleryItems
   .join("");
 
 container.insertAdjacentHTML("beforeend", markup);
+
+container.addEventListener("click", onClick);
+
+function onClick(evt) {
+  evt.preventDefault();
+
+  if (
+    !evt.target.classList.contains(
+      "gallery_item",
+      "gallery_link",
+      "gallery_image"
+    )
+  ) {
+    return;
+  }
+  console.log(evt.target);
+}
