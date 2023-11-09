@@ -3,7 +3,8 @@ import { galleryItems } from "./gallery-items.js";
 
 console.log(galleryItems);
 
-const list = document.querySelector(".gallery");
+const container = document.querySelector(".gallery");
+
 
 const markup = galleryItems
   .map(
@@ -23,32 +24,73 @@ const markup = galleryItems
   )
   .join("");
 
-list.insertAdjacentHTML("beforeend", markup);
 
-list.addEventListener("click", onClick);
+container.insertAdjacentHTML("beforeend", markup);
 
-function onClick(evt) {
-  evt.preventDefault();
+// container.addEventListener("click", onClick);
 
-  if (
-    !evt.target.classList.contains(
-      "gallery_item",
-      "gallery_link",
-      "gallery_image"
-    )
-  ) {
-    return;
+// function onClick(evt) {
+//   evt.preventDefault();
+
+//   if (evt.target === evt.currentTarget) {
+//     return;
+//   }
+
+//   const currentProduct = evt.target.closest(".gallery__item");
+
+//   container.forEach((item) => {
+//     const imgOriginal = document.querySelector(".gallery__image");
+//     console.log(`Img ${item.imgOriginal}`);
+
+//     const imgModal = imgOriginal.getAttribute("data-source");
+
+//     const instance = basicLightbox.create(`
+// <div class ="modal">
+// <img src="${imgModal}" width="800" height="600">
+// </div>
+// `);
+
+//     instance.show();
+//   });
+// }
+
+// const container = document.querySelectorAll(".gallery__item");
+
+// container.forEach(item => {
+//   const image = item.querySelector(".gallery__image");
+//   const originalSrc = image.getAttribute("data-source");
+
+//   //   // Запобігаємо переходу за посиланням
+//   item.addEventListener("click", (e) => {
+//     e.preventDefault();
+
+//     //     // Замінюємо значення атрибута src в модальному вікні
+//     const lightbox = basicLightbox.create(`
+//     <img src="${originalSrc}">
+//   `);
+
+//     //     // Відкриваємо модальне вікно
+//     lightbox.show();
+//   });
+// });
+
+container.addEventListener('click', function (event) {
+  event.preventDefault();
+
+  if (event.target.classList.contains('gallery__image')) {
+    const source = event.target.getAttribute('data-source');
+    
+    // Open the modal
+    const lightbox = basicLightbox.create(`
+      <img src="${source}" alt="Image description">
+    `);
+
+    lightbox.show();
   }
-  console.log(evt.target);
+});
 
-  //   const picture =
-  const instance = basicLightbox.create(`
-  <div class ="modal">
-   <img src="${original}" width="800" height="600">
-  </div>
-  `);
 
-  instance.show();
-}
 
-// onClick();
+
+
+
