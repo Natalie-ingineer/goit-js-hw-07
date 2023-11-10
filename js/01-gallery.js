@@ -37,7 +37,7 @@ function onClick(event) {
     
    
     const lightbox = basicLightbox.create(`
-      <img src="${source}" alt="Image description">
+      <img src="${source}">
     `);
 
     lightbox.show();
