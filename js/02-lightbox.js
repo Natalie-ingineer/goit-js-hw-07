@@ -3,7 +3,7 @@ import { galleryItems } from "./gallery-items.js";
 
 console.log(galleryItems);
 
-const container = document.querySelector("a");
+const container = document.querySelector(".gallery");
 
 const markup = galleryItems
   .map(
@@ -28,18 +28,25 @@ container.addEventListener("click", onClick);
 
 function onClick(event) {
   event.preventDefault();
-  const altAttr = event.target.getAttribute("alt");
 
-  if (event.target.classList.contains("gallery__image")) {
-  } else if (evt.target === evt.currentTarget) {
-    return;
-  }
+  //   const altAttr = event.target.getAttribute("alt");
+
+  //   if (event.target.classList.contains("gallery__image")) {
+  //   } else if (evt.target === evt.currentTarget) {
+  //     return;
+  //   }
 }
 
-const sourceAttr = document.querySelector("a");
-console.log(sourceAttr);
-console.log(sourceAttr.getAttribute("href"));
+const imgAttr = document.querySelector("a");
+const textImg = document.querySelector("img");
 
-const gallery = $(".gallery a").simpleLightbox({ sourceAttr });
+const source = imgAttr.getAttribute("href");
+const srcImg = imgAttr.getAttribute("src");
+const descriptionImg = textImg.getAttribute("alt");
+
+const gallery = new SimpleLightbox(".gallery a", {
+  sourceAtt: source,
+  captionsData: descriptionImg,
+});
 
 gallery.next(); // Next Image
