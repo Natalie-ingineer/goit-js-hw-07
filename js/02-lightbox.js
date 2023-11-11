@@ -29,12 +29,10 @@ container.addEventListener("click", onClick);
 function onClick(event) {
   event.preventDefault();
 
-  //   const altAttr = event.target.getAttribute("alt");
-
-  //   if (event.target.classList.contains("gallery__image")) {
-  //   } else if (evt.target === evt.currentTarget) {
-  //     return;
-  //   }
+  if (event.target.classList.contains("gallery__image")) {
+  } else if (evt.target === evt.currentTarget) {
+    return;
+  }
 }
 
 const imgAttr = document.querySelector("a");
@@ -45,8 +43,9 @@ const srcImg = imgAttr.getAttribute("src");
 const descriptionImg = textImg.getAttribute("alt");
 
 const gallery = new SimpleLightbox(".gallery a", {
-  sourceAtt: source,
-  captionsData: descriptionImg,
+  sourceAtt: "href",
+  captionsData: "alt",
+  captionDelay: 250,
 });
 
-gallery.next(); // Next Image
+gallery.open();
