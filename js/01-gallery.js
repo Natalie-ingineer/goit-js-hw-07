@@ -29,7 +29,9 @@ container.addEventListener("click", onClick);
 
 function onClick(event) {
   event.preventDefault();
-
+  if (evt.target === evt.currentTarget) {
+    return;
+  }
   event.target.classList.contains("gallery__image");
   const source = event.target.getAttribute("data-source");
 
@@ -43,9 +45,6 @@ function onClick(event) {
     if (e.code === "Escape") {
       instance.close();
     }
-
-    if (evt.target === evt.currentTarget) {
-      return;
-    }
+    container.removeEventListener("keydown", (e) => {});
   });
 }
