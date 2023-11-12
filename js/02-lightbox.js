@@ -24,28 +24,8 @@ const markup = galleryItems
 
 container.insertAdjacentHTML("beforeend", markup);
 
-container.addEventListener("click", onClick);
-
-function onClick(event) {
-  event.preventDefault();
-
-  if (event.target.classList.contains("gallery__image")) {
-  } else if (evt.target === evt.currentTarget) {
-    return;
-  }
-}
-
-const imgAttr = document.querySelector("a");
-const textImg = document.querySelector("img");
-
-const source = imgAttr.getAttribute("href");
-const srcImg = imgAttr.getAttribute("src");
-const descriptionImg = textImg.getAttribute("alt");
-
 const gallery = new SimpleLightbox(".gallery a", {
   sourceAtt: "href",
   captionsData: "alt",
   captionDelay: 250,
 });
-
-gallery.open();
